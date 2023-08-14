@@ -1,0 +1,30 @@
+spring:
+  main:
+    allow-circular-references: true
+server:
+  mode: web
+# feign客户端集成sentinel当服务端不可用时走fallback逻辑
+feign:
+  sentinel:
+    enabled: true
+
+sequence:
+  default:
+    increfactor: 1000
+    value: 100000
+    count: 16
+
+#多数据源配置
+sharding:
+  props:
+    sql-show: false
+    sql-simple: false
+  datasource:
+    master:
+      name: master
+      source:
+        username: root
+        password: 123456
+        url: jdbc:mysql://127.0.0.1:3308/dynamic_form?useUnicode=yes&characterEncoding=UTF8
+        driverClassName: com.mysql.cj.jdbc.Driver
+
